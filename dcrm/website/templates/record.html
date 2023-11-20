@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="card">
+  <div class="card-header"><strong>{{ customer_record.razon_social }}</strong>
+  </div>
+  <div class="card-body">
+
+<p class="card-text">
+<strong>Rut Empleador: </strong>{{ customer_record.id_empleador }}</p>    
+
+<p class="card-text">
+<strong>Email: </strong>{{ customer_record.email }}</p>
+
+<p class="card-text">
+<strong>Teléfono celular: </strong>{{ customer_record.celular|default_if_none:"(Sin Registro)" }}
+</p>
+
+<p class="card-text">
+<strong>Teléfono Fijo: </strong>{{ customer_record.telefono|default_if_none:"(Sin Registro)" }}</p>
+
+<p class="card-text">
+<strong>Dirección: </strong>{{ customer_record.direccion }}</p>
+
+<p class="card-text">
+<strong>Comuna: </strong>{{ customer_record.comuna }}</p>
+
+<p class="card-text">
+<strong>Cantidad Afiliados: </strong>{{ customer_record.cant_afiliados }}</p>
+
+<p class="card-text">
+<strong>Última Actualización: </strong>{{ customer_record.fecha_ultima_actualizacion }}</p>
+    
+  </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'inicio' %}" class="btn btn-secondary">Atrás</a>
+
+<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Eliminar</a>
+
+<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary">Actualizar Registro</a>
+
+<a href="{% url 'nueva_gestion'  %}" class="btn btn-primary">Nueva Gestión</a>
+
+{% endblock %}
